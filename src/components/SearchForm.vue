@@ -114,7 +114,7 @@ i {
   cursor: pointer;
 }
 .get-weather-icon:hover {
-  color: #333;
+  color: #fd8e34;
 }
 
 .error-message {

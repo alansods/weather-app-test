@@ -1,5 +1,6 @@
 <template>
   <div class="weather-viewer">
+    <i @click="$router.push('/')" class="fa-solid fa-arrow-left-long fa-xl back-button"></i>
     <CurrentWeather :query="query" />
     <TodayWeather :query="query" />
     <NextdaysWeather :query="query" />
@@ -37,5 +38,15 @@ export default {
 <style scoped>
 .weather-viewer {
   margin-top: 20px;
+}
+
+.back-button {
+  cursor: pointer;
+  color: #fff;
+  margin-bottom: 30px;
+}
+
+.back-button:hover {
+  color: #fd8e34;
 }
 </style>

@@ -1,6 +1,8 @@
 <template>
   <div id="app">
-    <router-view/>
+    <transition mode="out-in">
+      <router-view />
+    </transition>
   </div>
 </template>
 
@@ -9,13 +11,13 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
 }
 
 body {
   background: linear-gradient(#2b32b2, #1487cb);
   width: 100%;
-  height: 100vh;
+  min-height: 100vh;
   font-size: 16px;
   color: #333;
 }
@@ -42,5 +44,16 @@ i {
   color: #fff;
   font-weight: 300;
   margin-top: 5px;
+}
+
+.v-enter,
+.v-leave-to {
+  transform: translate3d(0, -20px, 0);
+  opacity: 0;
+}
+
+.v-enter-active,
+.v-leave-active {
+  transition: all 0.3s;
 }
 </style>

@@ -72,11 +72,11 @@ export default {
 
 .container-weather {
   display: flex;
+  justify-content: center;
   align-items: center;
   font-size: 2rem;
   font-weight: bold;
   color: #fff;
-  gap: ;
 }
 
 .weather {
@@ -87,9 +87,6 @@ export default {
   border-right: solid 1px #ffffff70;
 }
 
-.info {
-  flex: 1;
-}
 .weather span,
 .info span {
   display: block;
@@ -99,10 +96,12 @@ export default {
   display: flex;
   align-items: center;
   gap: 50px;
+  flex: 1;
 }
 
 .outer-container-info {
   display: flex;
+  justify-content: space-between;
   flex-direction: column;
   gap: 25px;
   flex: 1;
