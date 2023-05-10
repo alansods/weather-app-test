@@ -10,32 +10,24 @@ export default new Vuex.Store({
   },
   mutations: {
     addNewLocation(state, payload) {
-      console.log("payload.name: " + payload.name);
-
       if (state.savedLocations.length > 0) {
-
-        console.log("payload: " + JSON.stringify(payload));
-
         const isRepeated = state.savedLocations.some((el) => el.name === payload.name);
-
-        console.log("isRepeated: " + JSON.stringify(isRepeated));
 
         if (isRepeated) {
           alert("This city is already saved")
         } else {
           state.savedLocations.push(payload);
+          localStorage.setItem("LOCAL_SAVED_LOCATIONS", JSON.stringify(state.savedLocations))
         }
       } else {
         state.savedLocations.push(payload);
+        localStorage.setItem("LOCAL_SAVED_LOCATIONS", JSON.stringify(state.savedLocations))
       }
-
-      /* if (!isRepeated) {
-        state.savedLocations.push(payload);
-      } else {
-        console.log(payload);
-        alert("This city is already saved")
-      } */
     },
+
+    getLocalStorageData(state, payload) {
+      state.savedLocations = payload
+    }
   },
   actions: {},
   modules: {},

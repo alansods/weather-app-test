@@ -4,9 +4,13 @@
 
     <div class="title">Saved Cities</div>
 
-    <div class="container-card">
-      <div class="card" v-for="location in savedLocations" :key="location.dt">
-        <span @click="$router.push({ path: `/city/${location.name}`, query: location })">{{ location.name }}</span>
+    <div class="message" v-if="savedLocations.length === 0">
+      There are 0 saved city.
+    </div>
+
+    <div class="container-card" v-else>
+      <div class="card" v-for="location in savedLocations" :key="location.dt" @click="$router.push({ path: `/city/${location.name}`, query: location })">
+        <span>{{ location.name }}</span>
       </div>
     </div>
   </div>
@@ -62,5 +66,10 @@ export default {
 
 .back-button:hover {
   color: #fd8e34;
+}
+
+.message {
+  color: #ffffff65;
+  margin-top: 30px;
 }
 </style>

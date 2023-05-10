@@ -16,7 +16,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .save-location {
   position: absolute;
   top: 0;

@@ -6,6 +6,33 @@
   </div>
 </template>
 
+<script>
+
+export default {
+  name: "SearchForm",
+  components: {},
+
+  data() {
+    return {};
+  },
+
+  computed: {},
+
+  methods: {},
+
+  created() {
+    const dataLocalStorage = JSON.parse(localStorage.getItem("LOCAL_SAVED_LOCATIONS"))
+
+    console.log("dataLocalStorage: " + dataLocalStorage)
+
+    if(dataLocalStorage) {
+      this.$store.commit("getLocalStorageData", dataLocalStorage)
+    }
+
+  }
+};
+</script>
+
 <style lang="scss">
 * {
   margin: 0;

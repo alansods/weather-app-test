@@ -1,5 +1,7 @@
 <template>
   <div class="home">
+    <div @click="$router.push('/saved-locations')" class="save-location">Saved Cities</div>
+
     <div v-if="loading" class="loading">
       <i class="fa-solid fa-spinner fa-spin-pulse fa-5x"></i>
     </div>
@@ -95,6 +97,7 @@ export default {
 
 <style scoped>
 .home {
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -121,6 +124,23 @@ export default {
 .container-current-weather {
   display: flex;
   justify-content: space-between;
+  color: #fff;
+}
+
+.save-location {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: orange;
+  padding: 15px 15px;
+  border-radius: 0 0 15px 15px;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+
+.save-location:hover {
   color: #fff;
 }
 </style>

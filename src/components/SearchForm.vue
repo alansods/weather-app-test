@@ -58,6 +58,7 @@ export default {
         }
       } else {
         this.emptyMessage = true;
+        this.errorMessage = false
       }
     },
 
