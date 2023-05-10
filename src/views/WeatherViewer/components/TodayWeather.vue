@@ -50,14 +50,14 @@ export default {
 
   async created() {
     const geoRes = await axios.get(
-      `http://api.openweathermap.org/geo/1.0/direct?q=${this.query.name}&appid=${this.APIKey}`
+      `https://api.openweathermap.org/geo/1.0/direct?q=${this.query.name}&appid=${this.APIKey}`
     );
 
     this.lat = geoRes.data[0].lat;
     this.lon = geoRes.data[0].lon;
 
     const hourlyRes = await axios.get(
-      `http://api.openweathermap.org/data/2.5/forecast?lat=${this.lat}&lon=${this.lon}&units=metric&cnt=7&appid=${this.APIKey}`
+      `https://api.openweathermap.org/data/2.5/forecast?lat=${this.lat}&lon=${this.lon}&units=metric&cnt=7&appid=${this.APIKey}`
     );
     this.dataList = hourlyRes.data.list;
 
