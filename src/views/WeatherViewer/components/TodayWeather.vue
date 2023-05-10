@@ -1,17 +1,19 @@
 <template>
   <div>
-    <span class="secondary-title"> Today's weather </span>
+    <span class="title">Today's weather</span>
+
     <div class="container-card">
       <div class="card" v-for="data in dataList" :key="data.dt">
         <span>{{ formatDate(data.dt_txt, "h:mm a") }}</span>
         <img
-          height="30px"
+          height="40px"
           :src="`http://openweathermap.org/img/w/${data.weather[0].icon}.png`"
           alt="Weather Icon"
         />
-        <span>{{ data.main.temp }}</span>
+        <span>{{ data.main.temp }}º</span>
       </div>
     </div>
+
   </div>
 </template>
 
@@ -51,10 +53,6 @@ export default {
       `http://api.openweathermap.org/geo/1.0/direct?q=${this.query.name}&appid=${this.APIKey}`
     );
 
-    /* console.log("data coordenates: " + JSON.stringify(res.data));
-      console.log("data coordenates lat: " + JSON.stringify(res.data[0].lat));
-      console.log("data coordenates lon: " + JSON.stringify(res.data[0].lon)); */
-
     this.lat = geoRes.data[0].lat;
     this.lon = geoRes.data[0].lon;
 
@@ -69,11 +67,10 @@ export default {
 </script>
 
 <style scoped>
-.secondary-title {
+.title {
   display: block;
   color: #fff;
-  margin-top: 20px;
-  margin-bottom: 10px;
+  margin: 20px 0;
 }
 
 .container-card {
@@ -87,7 +84,7 @@ export default {
   width: 80px;
   height: 130px;
   border-radius: 4px;
-  background: #0000005d;
+  background: #0000003f;
   color: #fff;
   display: flex;
   flex-direction: column;

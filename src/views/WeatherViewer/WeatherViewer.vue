@@ -1,6 +1,8 @@
 <template>
   <div class="weather-viewer">
     <i @click="$router.push('/')" class="fa-solid fa-arrow-left-long fa-xl back-button"></i>
+
+    <SaveLocation :query="query" />
     <CurrentWeather :query="query" />
     <TodayWeather :query="query" />
     <NextdaysWeather :query="query" />
@@ -11,6 +13,7 @@
 import CurrentWeather from "./components/CurrentWeather.vue";
 import TodayWeather from "./components/TodayWeather.vue";
 import NextdaysWeather from "./components/NextdaysWeather.vue";
+import SaveLocation from "./components/SaveLocation.vue";
 
 export default {
   name: "WeatherViewer",
@@ -19,6 +22,7 @@ export default {
     CurrentWeather,
     TodayWeather,
     NextdaysWeather,
+    SaveLocation,
   },
 
   data() {
@@ -37,13 +41,13 @@ export default {
 
 <style scoped>
 .weather-viewer {
-  margin-top: 20px;
+  position: relative;
 }
 
 .back-button {
   cursor: pointer;
   color: #fff;
-  margin-bottom: 30px;
+  margin: 30px 0;
 }
 
 .back-button:hover {

@@ -37,7 +37,7 @@ export default {
   },
 
   computed: {
-    ...mapState(["APIKey", "location"]),
+    ...mapState(["APIKey"]),
   },
 
   methods: {
@@ -50,11 +50,8 @@ export default {
             `https://api.openweathermap.org/data/2.5/weather?q=${this.city}&units=metric&appid=${this.APIKey}`
           );
 
-          this.$store.commit("newLocation", res.data);
+          this.$router.push({ path: `/city/${res.data.name}`, query: res.data })
 
-          console.log("searched location: " + JSON.stringify(this.location));
-
-          this.$router.push({ path: `/${this.location.name}`, query: this.location })
         } catch (error) {
           this.errorMessage = true;
           console.error("Error: " + error);

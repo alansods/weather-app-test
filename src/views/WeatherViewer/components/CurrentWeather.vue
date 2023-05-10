@@ -8,14 +8,14 @@
     <div class="container-weather">
       <div class="container-icon">
         <img
-          height="130px"
+          height="150px"
           :src="`http://openweathermap.org/img/w/${query.weather[0].icon}.png`"
           alt="Weather Icon"
         />
 
         <div class="weather">
           <span class="weather-number">{{ Math.round(query.main.temp) }}º</span>
-          <span class="weather-kind">Sunny</span>
+          <span class="weather-kind">{{ query.weather[0].main }}</span>
         </div>
       </div>
 
@@ -80,10 +80,9 @@ export default {
 }
 
 .weather {
-  width: 100%;
   text-align: center;
-  padding-right: 20px;
-  margin-right: 20px;
+  margin-left: 50px;
+  padding-right: 30px;
   border-right: solid 1px #ffffff70;
 }
 

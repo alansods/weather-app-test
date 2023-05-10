@@ -13,7 +13,7 @@ const routes = [
     component: Home
   },
   {
-    path: '/:location',
+    path: '/city/:location',
     name: 'WeatherViewer',
     component: WeatherViewer
   },
