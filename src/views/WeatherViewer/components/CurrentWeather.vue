@@ -79,6 +79,17 @@ export default {
   color: #fff;
 }
 
+@media (max-width: 600px) {
+  .container-weather {
+    display: flex;
+    flex-direction: column;
+
+    font-size: 2rem;
+    font-weight: bold;
+    color: #fff;
+  }
+}
+
 .weather {
   text-align: center;
   margin-left: 50px;
@@ -86,9 +97,14 @@ export default {
   border-right: solid 1px #ffffff70;
 }
 
+.info {
+  flex: 1;
+}
+
 .weather span,
 .info span {
   display: block;
+  min-width: 100px;
 }
 
 .container-icon {

@@ -7,7 +7,6 @@
 </template>
 
 <script>
-
 export default {
   name: "SearchForm",
   components: {},
@@ -21,15 +20,16 @@ export default {
   methods: {},
 
   created() {
-    const dataLocalStorage = JSON.parse(localStorage.getItem("LOCAL_SAVED_LOCATIONS"))
+    const dataLocalStorage = JSON.parse(
+      localStorage.getItem("LOCAL_SAVED_LOCATIONS")
+    );
 
-    console.log("dataLocalStorage: " + dataLocalStorage)
+    console.log("dataLocalStorage: " + dataLocalStorage);
 
-    if(dataLocalStorage) {
-      this.$store.commit("getLocalStorageData", dataLocalStorage)
+    if (dataLocalStorage) {
+      this.$store.commit("getLocalStorageData", dataLocalStorage);
     }
-
-  }
+  },
 };
 </script>
 
@@ -59,6 +59,16 @@ i {
   color: #2c3e50;
   max-width: 800px;
   margin: 0 auto;
+}
+
+@media (max-width: 600px) {
+  #app {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    color: #2c3e50;
+    widows: 100%;
+    margin: 0 15px;
+  }
 }
 
 .location-name {
