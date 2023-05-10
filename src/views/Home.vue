@@ -6,17 +6,17 @@
 
     <div v-else class="container-current-weather">
       <div>
-        <div class="primary-text">
+        <div class="location-name">
           {{ dataCurrentWeather.name }}, {{ dataCurrentWeather.sys.country }}
         </div>
 
-        <div class="secondary-text">{{ formatedDate }}</div>
+        <div class="day-name">{{ formatedDate }}</div>
       </div>
 
       <div class="weather-icon">
         <!-- <i class="fa-sharp fa-solid fa-sun fa-3x"></i> -->
         <img height="60px" :src="`http://openweathermap.org/img/w/${dataCurrentWeather.weather[0].icon}.png`" alt="Weather Icon" />
-        <span>{{ dataCurrentWeather.main.temp }} º C</span>
+        <span>{{ Math.round(dataCurrentWeather.main.temp) }}º</span>
       </div>
     </div>
 
@@ -100,18 +100,6 @@ export default {
   justify-content: center;
   gap: 30px;
   height: 100vh;
-}
-
-.primary-text {
-  color: #fff;
-  font-size: 2rem;
-  font-weight: 700;
-}
-
-.secondary-text {
-  color: #fff;
-  font-weight: 300;
-  margin-top: 5px;
 }
 
 .weather-icon {

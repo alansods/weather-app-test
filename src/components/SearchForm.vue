@@ -1,17 +1,17 @@
 <template>
   <div>
     <div class="container">
-      <i class="fa fa-solid fa-magnifying-glass"></i>
+      <i class="fa fa-solid fa-magnifying-glass fa-lg" :class="{ active: isInputFocused }"></i>
       <input
         v-model="city"
         @keyup.enter="handleGetWeather"
+        @focus="isInputFocused = true"
+        @blur="isInputFocused = false"
         type="text"
         placeholder="Search for a city..."
       />
       <span>|</span>
-      <button @click="handleGetWeather">
-        <i class="fa fa-solid fa-location-crosshairs"></i>
-      </button>
+        <i @click="handleGetWeather" class="fa fa-solid fa-location-crosshairs fa-lg get-weather-icon"></i>
     </div>
     <span v-if="emptyMessage" class="error-message">Type a city name.</span>
     <span v-if="errorMessage" class="error-message">City not found.</span>
@@ -31,12 +31,13 @@ export default {
       city: "",
       errorMessage: false,
       emptyMessage: false,
-      dataWeather: "",
+
+      isInputFocused: false
     };
   },
 
   computed: {
-    ...mapState(["APIKey"]),
+    ...mapState(["APIKey", "location"]),
   },
 
   methods: {
@@ -46,12 +47,14 @@ export default {
         this.errorMessage = false
         try {
           const res = await axios.get(
-            `http://api.openweathermap.org/geo/1.0/direct?q=${this.city}&limit=5&appid=${this.APIKey}`
+            `https://api.openweathermap.org/data/2.5/weather?q=${this.city}&units=metric&appid=${this.APIKey}`
           );
 
-          this.dataWeather = res.data;
+          this.$store.commit("newLocation", res.data);
 
-          console.log("this.dataWeather: " + JSON.stringify(this.dataWeather));
+          console.log("searched location: " + JSON.stringify(this.location));
+
+          this.$router.push({ path: `/${this.location.name}`, query: this.location })
         } catch (error) {
           this.errorMessage = true;
           console.error("Error: " + error);
@@ -60,6 +63,10 @@ export default {
         this.emptyMessage = true;
       }
     },
+
+    handleButtonMouseDown(event) {
+      event.stopPropagation();
+    }
   },
 };
 </script>
@@ -94,15 +101,24 @@ i {
   color: #ccc;
 }
 
-button {
-  border: none;
-  outline: none;
-  background: none;
+.container:focus-within {
+  outline: #fd8e34 solid 3px;
+}
+
+.active {
+  color: #fd8e34;
+}
+
+.get-weather-icon {
+  color: #ccc;
   cursor: pointer;
+}
+.get-weather-icon:hover {
+  color: #333;
 }
 
 .error-message {
-  color: rgb(255, 145, 0);
+  color: #fd8e34;
   font-size: .9rem;
 }
 </style>

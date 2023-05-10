@@ -32,4 +32,15 @@ i {
   margin: 0 auto;
 }
 
+.location-name {
+  color: #fff;
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.day-name {
+  color: #fff;
+  font-weight: 300;
+  margin-top: 5px;
+}
 </style>
