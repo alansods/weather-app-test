@@ -28,9 +28,10 @@
 
 ## Chalanges faced
 
-- Learn to work with an API that I've never used before;
-- Build an application with only an incomplete interface sketch and no interactive prototype;
-- Short deadline.
+- Learn to work with an API that I've never used before. Solved by studying the documentation;
+- Build an application with only an incomplete interface sketch and no interactive prototype. Solved by creating the missing parts with my design skills;
+- Short deadline. Solved by separating the work in small steps and managing time;
+- Limitations from the free version of the openweather API. Solved by improvising some details.
 
 ## Lessons learned during the project
 - Work with openweather API;
