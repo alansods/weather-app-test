@@ -2,7 +2,11 @@
   <div>
     <span class="title">Today's weather</span>
 
-    <div class="container-card">
+    <div v-if="loading" class="loading">
+      <i class="fa-solid fa-spinner fa-spin-pulse fa-5x"></i>
+    </div>
+
+    <div v-else class="container-card">
       <div class="card" v-for="data in dataList" :key="data.dt">
         <span>{{ formatDate(data.dt_txt, "h:mm a") }}</span>
         <img
@@ -13,7 +17,6 @@
         <span>{{ data.main.temp }}º</span>
       </div>
     </div>
-
   </div>
 </template>
 
@@ -33,6 +36,8 @@ export default {
       lat: 0,
       lon: 0,
 
+      loading: true,
+
       dataList: [],
     };
   },
@@ -49,19 +54,22 @@ export default {
   },
 
   async created() {
-    const geoRes = await axios.get(
-      `https://api.openweathermap.org/geo/1.0/direct?q=${this.query.name}&appid=${this.APIKey}`
-    );
+    try {
+      const geoRes = await axios.get(
+        `https://api.openweathermap.org/geo/1.0/direct?q=${this.query.name}&appid=${this.APIKey}`
+      );
 
-    this.lat = geoRes.data[0].lat;
-    this.lon = geoRes.data[0].lon;
+      this.lat = geoRes.data[0].lat;
+      this.lon = geoRes.data[0].lon;
 
-    const hourlyRes = await axios.get(
-      `https://api.openweathermap.org/data/2.5/forecast?lat=${this.lat}&lon=${this.lon}&units=metric&cnt=7&appid=${this.APIKey}`
-    );
-    this.dataList = hourlyRes.data.list;
-
-    console.log("data hourly: " + JSON.stringify(this.dataList));
+      const hourlyRes = await axios.get(
+        `https://api.openweathermap.org/data/2.5/forecast?lat=${this.lat}&lon=${this.lon}&units=metric&cnt=7&appid=${this.APIKey}`
+      );
+      this.dataList = hourlyRes.data.list;
+      this.loading = false;
+    } catch (err) {
+      console.error(err.message);
+    }
   },
 };
 </script>

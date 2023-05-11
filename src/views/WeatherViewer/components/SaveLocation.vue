@@ -1,11 +1,13 @@
 <template>
-  <div @click="toggleSaveLocation" class="save-location">{{ isRepeated ? "Save location" : "Remove saved location" }}</div>
+  <div @click="toggleSaveLocation" class="save-location">{{ isRepeated ? "Remove saved location" : "Save location" }}</div>
 </template>
 
 <script>
+import { mapState } from "vuex";
+
 export default {
   name: "NextdaysWeather",
-  props: ["query", "savedLocations"],
+  props: ["query"],
 
   data() {
     return {
@@ -13,15 +15,20 @@ export default {
     }
   },
 
+  computed: {
+    ...mapState(["savedLocations"]),
+  },
+
   methods: {
     toggleSaveLocation() {
-      this.$store.commit("addNewLocation", this.query);
+      this.$store.commit("toggleNewLocation", this.query);
       this.isRepeated = !this.isRepeated;
     },
   },
 
   created() {
-    this.isRepeated = this.savedLocations.some((el) => el.name === this.query.name);
+    console.log("this.savedLocations: " + JSON.stringify(this.savedLocations))
+    this.isRepeated = this.savedLocations?.some((el) => el.name === this.query.name);
   }
 };
 </script>

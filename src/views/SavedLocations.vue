@@ -5,7 +5,7 @@
     <div class="title">Saved Cities</div>
 
     <div class="message" v-if="savedLocations.length === 0">
-      There are 0 saved city.
+      There are 0 saved cities.
     </div>
 
     <div class="container-card" v-else>

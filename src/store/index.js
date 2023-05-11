@@ -13,21 +13,24 @@ export default new Vuex.Store({
     savedLocations: [],
   },
   mutations: {
-    addNewLocation(state, payload) {
+    toggleNewLocation(state, payload) {
       if (state.savedLocations.length > 0) {
+        console.log("NOT EMPTY")
         const isRepeated = state.savedLocations.some((el) => el.name === payload.name);
 
         if (isRepeated) {
+          console.log("REPEATED")
+          const newList = state.savedLocations.filter((el) => el.name !== payload.name)
+          state.savedLocations = newList
+          localStorage.setItem("LOCAL_SAVED_LOCATIONS", JSON.stringify(state.savedLocations))
+
           const toastedDelete = store._vm.$root.$toasted;
           toastedDelete.error('City removed successfully!', {
             position: 'bottom-right',
             duration: 3000,
           });
-          const newList = state.savedLocations.filter((el) => el.name !== payload.name)
-          state.savedLocations = newList
-
-          localStorage.setItem("LOCAL_SAVED_LOCATIONS", JSON.stringify(state.savedLocations))
         } else {
+          console.log("NOT REPEATED")
           state.savedLocations.push(payload);
           localStorage.setItem("LOCAL_SAVED_LOCATIONS", JSON.stringify(state.savedLocations))
 
@@ -38,8 +41,15 @@ export default new Vuex.Store({
           });
         }
       } else {
+        console.log("EMPTY")
         state.savedLocations.push(payload);
         localStorage.setItem("LOCAL_SAVED_LOCATIONS", JSON.stringify(state.savedLocations))
+
+        const toastedAdd = store._vm.$root.$toasted;
+          toastedAdd.success('City saved successfully!', {
+            position: 'bottom-right',
+            duration: 3000,
+          });
       }
     },
 

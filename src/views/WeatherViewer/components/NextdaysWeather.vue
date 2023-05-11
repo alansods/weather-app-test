@@ -2,7 +2,11 @@
   <div>
     <span class="title">Next 3 days</span>
 
-    <div class="container-card">
+    <div v-if="loading" class="loading">
+      <i class="fa-solid fa-spinner fa-spin-pulse fa-5x"></i>
+    </div>
+
+    <div v-else class="container-card">
       <div class="card" v-for="data in dataList" :key="data.dt">
         <div>
           <div>{{ formatDateDay(data.dt_txt) }}</div>
@@ -41,7 +45,7 @@
 
 <script>
 import axios from "axios";
-import { format, parseISO } from 'date-fns';
+import { format, parseISO } from "date-fns";
 import { mapState } from "vuex";
 
 export default {
@@ -55,6 +59,8 @@ export default {
       lat: 0,
       lon: 0,
 
+      loading: true,
+
       dataList: [],
     };
   },
@@ -66,29 +72,32 @@ export default {
   methods: {
     formatDateDay(dateString) {
       const date = parseISO(dateString);
-      return format(date, 'eee');
+      return format(date, "eee");
     },
 
     formatDate(dateString) {
       const date = parseISO(dateString);
-      return format(date, 'dd/MM');
+      return format(date, "dd/MM");
     },
   },
 
   async created() {
-    const geoRes = await axios.get(
-      `https://api.openweathermap.org/geo/1.0/direct?q=${this.query.name}&appid=${this.APIKey}`
-    );
+    try {
+      const geoRes = await axios.get(
+        `https://api.openweathermap.org/geo/1.0/direct?q=${this.query.name}&appid=${this.APIKey}`
+      );
 
-    this.lat = geoRes.data[0].lat;
-    this.lon = geoRes.data[0].lon;
+      this.lat = geoRes.data[0].lat;
+      this.lon = geoRes.data[0].lon;
 
-    const hourlyRes = await axios.get(
-      `https://api.openweathermap.org/data/2.5/forecast?lat=${this.lat}&lon=${this.lon}&units=metric&cnt=3&appid=${this.APIKey}`
-    );
-    this.dataList = hourlyRes.data.list;
-
-    console.log("data hourly: " + JSON.stringify(this.dataList));
+      const hourlyRes = await axios.get(
+        `https://api.openweathermap.org/data/2.5/forecast?lat=${this.lat}&lon=${this.lon}&units=metric&cnt=3&appid=${this.APIKey}`
+      );
+      this.dataList = hourlyRes.data.list;
+      this.loading = false;
+    } catch (err) {
+      console.error(err);
+    }
   },
 };
 </script>
@@ -101,7 +110,7 @@ export default {
 }
 
 .container-card {
-  margin-bottom: 50px
+  margin-bottom: 50px;
 }
 .card {
   width: 100%;

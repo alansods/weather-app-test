@@ -94,5 +94,11 @@ i {
   transition: all 0.3s;
 }
 
+.loading {
+  color: #fff;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
 
 </style>

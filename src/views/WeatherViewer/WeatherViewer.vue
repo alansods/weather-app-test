@@ -1,6 +1,6 @@
 <template>
   <div class="weather-viewer">
-    <i @click="$router.push('/')" class="fa-solid fa-arrow-left-long fa-xl back-button"></i>
+    <i @click="$router.go(-1)" class="fa-solid fa-arrow-left-long fa-xl back-button"></i>
 
     <SaveLocation :query="query" />
     <CurrentWeather :query="query" />

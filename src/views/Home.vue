@@ -1,6 +1,8 @@
 <template>
   <div class="home">
-    <div @click="$router.push('/saved-locations')" class="save-location">Saved Cities</div>
+    <div @click="$router.push('/saved-locations')" class="save-location">
+      Saved Cities
+    </div>
 
     <div v-if="loading" class="loading">
       <i class="fa-solid fa-spinner fa-spin-pulse fa-5x"></i>
@@ -17,7 +19,11 @@
 
       <div class="weather-icon">
         <!-- <i class="fa-sharp fa-solid fa-sun fa-3x"></i> -->
-        <img height="60px" :src="`http://openweathermap.org/img/w/${dataCurrentWeather.weather[0].icon}.png`" alt="Weather Icon" />
+        <img
+          height="60px"
+          :src="`http://openweathermap.org/img/w/${dataCurrentWeather.weather[0].icon}.png`"
+          alt="Weather Icon"
+        />
         <span>{{ Math.round(dataCurrentWeather.main.temp) }}º</span>
       </div>
     </div>
@@ -79,9 +85,9 @@ export default {
           getWeather(this.latitude, this.longitude)
             .then((data) => {
               this.dataCurrentWeather = data;
-              console.log("data: " + JSON.stringify(data))
+              console.log("data: " + JSON.stringify(data));
               this.loading = false;
-              this.geolocationMessage = false
+              this.geolocationMessage = false;
             })
             .catch((error) => {
               console.error("Erro ao obter previsão do tempo:", error);
@@ -89,11 +95,11 @@ export default {
         },
         (error) => {
           console.error(error);
-          this.geolocationMessage = true
+          this.geolocationMessage = true;
         }
       );
     } else {
-      this.geolocationMessage = true
+      this.geolocationMessage = true;
       console.error("Geolocation is not supported by this browser.");
     }
   },
@@ -120,16 +126,21 @@ export default {
   font-size: 2rem;
   font-weight: bold;
 }
-.loading {
-  color: #fff;
-  text-align: center;
-  margin-bottom: 10px;
-}
 
 .container-current-weather {
   display: flex;
   justify-content: space-between;
   color: #fff;
+}
+
+@media (max-width: 600px) {
+  .container-current-weather {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #fff;
+    gap: 20px
+  }
 }
 
 .save-location {
