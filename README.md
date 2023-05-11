@@ -4,6 +4,10 @@
 
 <a href="https://weather-app-test-chi.vercel.app/">https://weather-app-test-chi.vercel.app/</a>
 
+![Home](https://github.com/alansods/weather-app-test/blob/main/public/home.png)
+![City](https://github.com/alansods/weather-app-test/blob/main/public/city.png)
+![Mobile](https://github.com/alansods/weather-app-test/blob/main/public/mobile.png)
+
 ## Technologies used
 
 - Vue 2;
