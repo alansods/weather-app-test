@@ -40,7 +40,8 @@
 - Learned new stuff about date-fns.
 
 ## Future improvements
-- Refactor some partes of the code to avoid repeated code and css.
+- Refactor some partes of the code to avoid repeated code and css;
+- Fix a bug where the images doe not load correctly on Iphone.
 
 ## Project setup
 ```
