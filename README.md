@@ -26,7 +26,7 @@
 ## APIs used
 - OpenWeather
 
-## Chalanges faced
+## Challenges faced
 
 - Learn to work with an API that I've never used before. Solved by studying the documentation;
 - Build an application with only an incomplete interface sketch and no interactive prototype. Solved by creating the missing parts with my design skills;
@@ -41,7 +41,7 @@
 
 ## Future improvements
 - Refactor some partes of the code to avoid repeated code and css;
-- Fix a bug where the images doe not load correctly on Iphone.
+- Fix a bug where the images does not load correctly on Iphone.
 
 ## Project setup
 ```
