@@ -115,6 +115,7 @@ export default {
 }
 
 .outer-container-info {
+  width: 100%;
   display: flex;
   justify-content: space-between;
   flex-direction: column;

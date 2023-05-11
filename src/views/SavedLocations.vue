@@ -1,6 +1,9 @@
 <template>
   <div class="saved-locations">
-    <i @click="$router.push('/')" class="fa-solid fa-arrow-left-long fa-xl back-button"></i>
+    <i
+      @click="$router.push('/')"
+      class="fa-solid fa-arrow-left-long fa-xl back-button"
+    ></i>
 
     <div class="title">Saved Cities</div>
 
@@ -9,7 +12,14 @@
     </div>
 
     <div class="container-card" v-else>
-      <div class="card" v-for="location in savedLocations" :key="location.dt" @click="$router.push({ path: `/city/${location.name}`, query: location })">
+      <div
+        class="card"
+        v-for="location in savedLocations"
+        :key="location.dt"
+        @click="
+          $router.push({ path: `/city/${location.name}`, query: location })
+        "
+      >
         <span>{{ location.name }}</span>
       </div>
     </div>
@@ -23,14 +33,11 @@ export default {
   computed: {
     ...mapState(["savedLocations"]),
   },
-  methods: {
-
-  }
+  methods: {},
 };
 </script>
 
 <style scoped>
-
 .title {
   font-size: 1.5rem;
   font-weight: 700;
@@ -52,6 +59,19 @@ export default {
   background: #0000003f;
   color: #fff;
   cursor: pointer;
+}
+
+@media (max-width: 600px) {
+  .card {
+    display: inline-block;
+    width: 100%;
+    padding: 10px 0;
+    text-align: center;
+    border-radius: 4px;
+    background: #0000003f;
+    color: #fff;
+    cursor: pointer;
+  }
 }
 
 .card:hover {
