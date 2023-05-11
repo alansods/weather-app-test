@@ -7,6 +7,7 @@
 ![Home](https://github.com/alansods/weather-app-test/blob/main/public/home.png)
 ![City](https://github.com/alansods/weather-app-test/blob/main/public/city.png)
 ![Mobile](https://github.com/alansods/weather-app-test/blob/main/public/mobile.png)
+![Mobile](https://github.com/alansods/weather-app-test/blob/main/public/mobile_city.png)
 
 ## Technologies used
 
