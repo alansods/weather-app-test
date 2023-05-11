@@ -27,17 +27,30 @@
 - Short deadline.
 
 ## Lessons learned during the project
-- Work with navigator geolocation;
 - Work with openweather API;
+- Discovered about with navigator geolocation;
 - Discovered about vue-toasted;
 - Learned new stuff about date-fns.
 
 ## Future improvements
-- Refactor some partes of the code to avoid repeated code.
+- Refactor some partes of the code to avoid repeated code and css.
 
 ## Project setup
 ```
 npm install
+```
+
+## Libs setup
+```
+npm install axios
+```
+
+```
+npm install date-fns
+```
+
+```
+npm install vue-toasted
 ```
 
 ### Compiles and hot-reloads for development
