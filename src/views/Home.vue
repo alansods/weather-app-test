@@ -23,6 +23,9 @@
     </div>
 
     <SearchForm />
+    <div v-if="geolocationMessage" class="geolocation-message">
+      Give localization permissions and refresh the page, please!
+    </div>
   </div>
 </template>
 
@@ -42,6 +45,7 @@ export default {
   data() {
     return {
       loading: true,
+      geolocationMessage: false,
 
       currentLatitude: 0,
       currentLongitude: 0,
@@ -74,21 +78,22 @@ export default {
 
           getWeather(this.latitude, this.longitude)
             .then((data) => {
-              // Aqui você pode manipular os dados recebidos da API
               this.dataCurrentWeather = data;
               console.log("data: " + JSON.stringify(data))
               this.loading = false;
+              this.geolocationMessage = false
             })
             .catch((error) => {
-              // Lidar com erros, se houver algum
               console.error("Erro ao obter previsão do tempo:", error);
             });
         },
         (error) => {
           console.error(error);
+          this.geolocationMessage = true
         }
       );
     } else {
+      this.geolocationMessage = true
       console.error("Geolocation is not supported by this browser.");
     }
   },
@@ -144,5 +149,9 @@ export default {
   color: #fff;
 }
 
-
+.geolocation-message {
+  color: orange;
+  font-size: 1.5rem;
+  text-align: center;
+}
 </style>
