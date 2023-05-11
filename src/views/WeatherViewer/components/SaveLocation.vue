@@ -1,18 +1,28 @@
 <template>
-  <div @click="handleSaveLocation" class="save-location">Save Location</div>
+  <div @click="toggleSaveLocation" class="save-location">{{ isRepeated ? "Save location" : "Remove saved location" }}</div>
 </template>
 
 <script>
 export default {
   name: "NextdaysWeather",
-  props: ["query"],
+  props: ["query", "savedLocations"],
+
+  data() {
+    return {
+      isRepeated: false,
+    }
+  },
 
   methods: {
-    handleSaveLocation() {
+    toggleSaveLocation() {
       this.$store.commit("addNewLocation", this.query);
-      this.$router.push("/saved-locations");
+      this.isRepeated = !this.isRepeated;
     },
   },
+
+  created() {
+    this.isRepeated = this.savedLocations.some((el) => el.name === this.query.name);
+  }
 };
 </script>
 

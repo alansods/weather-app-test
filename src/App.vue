@@ -93,4 +93,6 @@ i {
 .v-leave-active {
   transition: all 0.3s;
 }
+
+
 </style>
