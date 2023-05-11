@@ -79,7 +79,7 @@ export default {
   color: #fff;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 960px) {
   .container-weather {
     display: flex;
     flex-direction: column;

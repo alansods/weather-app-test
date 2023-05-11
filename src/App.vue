@@ -61,7 +61,7 @@ i {
   margin: 0 auto;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 960px) {
   #app {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;

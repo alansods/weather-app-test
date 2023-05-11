@@ -61,7 +61,7 @@ export default {
   cursor: pointer;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 960px) {
   .card {
     display: inline-block;
     width: 100%;
