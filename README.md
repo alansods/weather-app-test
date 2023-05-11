@@ -6,8 +6,8 @@
 
 ![Home](https://github.com/alansods/weather-app-test/blob/main/public/home.png)
 ![City](https://github.com/alansods/weather-app-test/blob/main/public/city.png)
-![Mobile](https://github.com/alansods/weather-app-test/blob/main/public/mobile.png)
-![Mobile](https://github.com/alansods/weather-app-test/blob/main/public/mobile_city.png)
+<img src="https://github.com/alansods/weather-app-test/blob/main/public/mobile.png" alt="mobile" style="margin-right: 10px;">
+<img src="https://github.com/alansods/weather-app-test/blob/main/public/mobile_city.png" alt="mobile_city" style="float: left;>
 
 ## Technologies used
 
